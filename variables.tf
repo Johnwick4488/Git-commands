@@ -1,4 +1,4 @@
 variable "ec2_name" {
   type    = string
-  default = "githubactions"
+  default = "new-ec2"
 }
