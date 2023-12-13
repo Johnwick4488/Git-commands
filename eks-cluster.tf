@@ -47,18 +47,6 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
   role       = aws_iam_role.cluster.name
 }
 
-
-# EKS Cluster Security Group
-resource "aws_security_group" "eks_cluster" {
-  name        = "${var.eksproject}-cluster-sg"
-  description = "Cluster communication with worker nodes"
-  vpc_id      = aws_vpc.this.id
-
-  tags = {
-    Name = "${var.eksproject}-cluster-sg"
-  }
-}
-
 # resource "aws_security_group_rule" "cluster_inbound" {
 #   description              = "Allow worker nodes to communicate with the cluster API Server"
 #   from_port                = 443
