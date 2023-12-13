@@ -27,3 +27,23 @@ resource "aws_eks_node_group" "this" {
   ]
 }
 
+
+# EKS Node IAM Role
+resource "aws_iam_role" "node" {
+  name = "${var.eksproject}-Worker-Role"
+
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
+}
